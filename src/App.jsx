@@ -1,15 +1,18 @@
 import './App.css';
 
-import BookingForm from './components/BookingForm';
-import Header from './components/Header';
+import Footer from './components/Footer';
+import Main from './components/main';
+import Menu from './components/Menu';
 import Nav from './components/Nav';
 
 function App() {
   return(
     <>
     <Nav />
-    <Header />
-    <BookingForm />
+    <Main />
+    <Menu />
+    <Footer/>
+    
     </>
   
   )

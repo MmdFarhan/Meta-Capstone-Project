@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BookingForm(){
+function BookingForm(props){
     const [date,setDate]= React.useState("");
     const [time,setTime]= React.useState("");
     const [guests,setGuests]= React.useState("");
@@ -8,12 +8,20 @@ function BookingForm(){
     
     function handleSubmit(event){
         event.preventDefault();
-        props.SubmitForm(event);
+    
+        const formData = {
+            date,
+            time,
+            guests,
+            occasion
+        };
+    
+        props.submitForm(formData); // ✅ Correct
     }
     function handleChange(event){
         const val = event.target.value;
         setDate(val);
-        props.dispatch(val);
+        props.dispatch({ date: new Date(val) });
     }
     function handleGuests(event){
         const val = event.target.value;
@@ -35,9 +43,15 @@ function BookingForm(){
                             <input onChange={handleChange} value={date} id='book-date' type='date'/>
                         </div>
                         {/*Select Time*/}
-                        <div>
-
-                        </div>
+                         <div>
+                            <label htmlFor='book-time'>Choose time:</label>
+                            <select id='book-time' value={time} onChange={(e)=>{setTime(e.target.value)}}>
+                            <option>Select a Time</option>
+                            {props.availableTime.availableTime.map((availableTime=>
+                                {return <option key={availableTime}>{availableTime}</option> }))}
+                            </select>
+                         </div>
+                        
                         {/*Select Guests*/}
                         <div>
                             <label htmlFor='book-guests'>Number Of Guests:</label>
@@ -53,7 +67,7 @@ function BookingForm(){
                         </select>
                         </div>
                         {/*Submit Button*/}
-                        <div className='btnRecieve'>
+                        <div className='btnReceive'>
                             <input aria-label='on Click'  type="submit" value={"Make Your Reservation"} />
                         </div>
 

@@ -21,12 +21,11 @@ function Nav(){
             {/*nav items*/}
             <ul className={`nav-links ${menuOpen?"visible":""}`}>
                 <li><a href='/'>Home</a></li>
-                <li><a href='/'>Menu</a></li>
+                <li><a href='/Menu'>Menu</a></li>
                 <li><a href='/'>About</a></li>
                 <li><a href='/'>Services</a></li>
-                <li><a href='/'>Reservations</a></li>
+                <li><a href='/BookingForm'>Reservations</a></li>
                 <li><a href='/'>Online Order</a></li>
-                <li><a href='/'>Login</a></li>
             </ul>
         </nav>
     )
